@@ -1,0 +1,305 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		07DE688A158E8B5200798DBA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07DE6889158E8B5200798DBA /* UIKit.framework */; };
+		07DE688C158E8B5200798DBA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07DE688B158E8B5200798DBA /* Foundation.framework */; };
+		07DE688E158E8B5200798DBA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07DE688D158E8B5200798DBA /* CoreGraphics.framework */; };
+		07DE6894158E8B5200798DBA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07DE6892158E8B5200798DBA /* InfoPlist.strings */; };
+		07DE6896158E8B5200798DBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DE6895158E8B5200798DBA /* main.m */; };
+		07DE689A158E8B5200798DBA /* CRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DE6899158E8B5200798DBA /* CRAppDelegate.m */; };
+		07DE68A2158E8BEF00798DBA /* IsSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 07DE68A0158E8BEF00798DBA /* IsSelected.png */; };
+		07DE68A3158E8BEF00798DBA /* IsSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07DE68A1158E8BEF00798DBA /* IsSelected@2x.png */; };
+		07DE68A7158E8C1500798DBA /* NotSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 07DE68A5158E8C1500798DBA /* NotSelected.png */; };
+		07DE68A8158E8C1500798DBA /* NotSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07DE68A6158E8C1500798DBA /* NotSelected@2x.png */; };
+		07DE68AB158E902900798DBA /* CRTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DE68AA158E902900798DBA /* CRTableViewController.m */; };
+		07DE68AE158E915300798DBA /* CRTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DE68AD158E915300798DBA /* CRTableViewCell.m */; };
+		AA22131D158EF328007E9708 /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = AA22131C158EF328007E9708 /* screenshot.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		07DE6885158E8B5200798DBA /* CRMultiRowSelector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CRMultiRowSelector.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		07DE6889158E8B5200798DBA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		07DE688B158E8B5200798DBA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		07DE688D158E8B5200798DBA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		07DE6891158E8B5200798DBA /* CRMultiRowSelector-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CRMultiRowSelector-Info.plist"; sourceTree = "<group>"; };
+		07DE6893158E8B5200798DBA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		07DE6895158E8B5200798DBA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		07DE6897158E8B5200798DBA /* CRMultiRowSelector-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CRMultiRowSelector-Prefix.pch"; sourceTree = "<group>"; };
+		07DE6898158E8B5200798DBA /* CRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CRAppDelegate.h; sourceTree = "<group>"; };
+		07DE6899158E8B5200798DBA /* CRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CRAppDelegate.m; sourceTree = "<group>"; };
+		07DE68A0158E8BEF00798DBA /* IsSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IsSelected.png; sourceTree = "<group>"; };
+		07DE68A1158E8BEF00798DBA /* IsSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IsSelected@2x.png"; sourceTree = "<group>"; };
+		07DE68A5158E8C1500798DBA /* NotSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotSelected.png; sourceTree = "<group>"; };
+		07DE68A6158E8C1500798DBA /* NotSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotSelected@2x.png"; sourceTree = "<group>"; };
+		07DE68A9158E902900798DBA /* CRTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTableViewController.h; sourceTree = "<group>"; };
+		07DE68AA158E902900798DBA /* CRTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTableViewController.m; sourceTree = "<group>"; };
+		07DE68AC158E915300798DBA /* CRTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTableViewCell.h; sourceTree = "<group>"; };
+		07DE68AD158E915300798DBA /* CRTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTableViewCell.m; sourceTree = "<group>"; };
+		AA22131C158EF328007E9708 /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		07DE6882158E8B5200798DBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07DE688A158E8B5200798DBA /* UIKit.framework in Frameworks */,
+				07DE688C158E8B5200798DBA /* Foundation.framework in Frameworks */,
+				07DE688E158E8B5200798DBA /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		07DE687A158E8B5200798DBA = {
+			isa = PBXGroup;
+			children = (
+				AA22131C158EF328007E9708 /* screenshot.png */,
+				07DE688F158E8B5200798DBA /* CRMultiRowSelector */,
+				07DE6888158E8B5200798DBA /* Frameworks */,
+				07DE6886158E8B5200798DBA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		07DE6886158E8B5200798DBA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				07DE6885158E8B5200798DBA /* CRMultiRowSelector.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		07DE6888158E8B5200798DBA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				07DE6889158E8B5200798DBA /* UIKit.framework */,
+				07DE688B158E8B5200798DBA /* Foundation.framework */,
+				07DE688D158E8B5200798DBA /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		07DE688F158E8B5200798DBA /* CRMultiRowSelector */ = {
+			isa = PBXGroup;
+			children = (
+				07DE68A4158E8BF500798DBA /* Images */,
+				07DE6898158E8B5200798DBA /* CRAppDelegate.h */,
+				07DE6899158E8B5200798DBA /* CRAppDelegate.m */,
+				07DE6890158E8B5200798DBA /* Supporting Files */,
+				07DE68A9158E902900798DBA /* CRTableViewController.h */,
+				07DE68AA158E902900798DBA /* CRTableViewController.m */,
+				07DE68AC158E915300798DBA /* CRTableViewCell.h */,
+				07DE68AD158E915300798DBA /* CRTableViewCell.m */,
+			);
+			path = CRMultiRowSelector;
+			sourceTree = "<group>";
+		};
+		07DE6890158E8B5200798DBA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				07DE6891158E8B5200798DBA /* CRMultiRowSelector-Info.plist */,
+				07DE6892158E8B5200798DBA /* InfoPlist.strings */,
+				07DE6895158E8B5200798DBA /* main.m */,
+				07DE6897158E8B5200798DBA /* CRMultiRowSelector-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		07DE68A4158E8BF500798DBA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				07DE68A5158E8C1500798DBA /* NotSelected.png */,
+				07DE68A6158E8C1500798DBA /* NotSelected@2x.png */,
+				07DE68A0158E8BEF00798DBA /* IsSelected.png */,
+				07DE68A1158E8BEF00798DBA /* IsSelected@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		07DE6884158E8B5200798DBA /* CRMultiRowSelector */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07DE689D158E8B5200798DBA /* Build configuration list for PBXNativeTarget "CRMultiRowSelector" */;
+			buildPhases = (
+				07DE6881158E8B5200798DBA /* Sources */,
+				07DE6882158E8B5200798DBA /* Frameworks */,
+				07DE6883158E8B5200798DBA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CRMultiRowSelector;
+			productName = CRMultiRowSelector;
+			productReference = 07DE6885158E8B5200798DBA /* CRMultiRowSelector.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		07DE687C158E8B5200798DBA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = CR;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 07DE687F158E8B5200798DBA /* Build configuration list for PBXProject "CRMultiRowSelector" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 07DE687A158E8B5200798DBA;
+			productRefGroup = 07DE6886158E8B5200798DBA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				07DE6884158E8B5200798DBA /* CRMultiRowSelector */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		07DE6883158E8B5200798DBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07DE6894158E8B5200798DBA /* InfoPlist.strings in Resources */,
+				07DE68A2158E8BEF00798DBA /* IsSelected.png in Resources */,
+				07DE68A3158E8BEF00798DBA /* IsSelected@2x.png in Resources */,
+				07DE68A7158E8C1500798DBA /* NotSelected.png in Resources */,
+				07DE68A8158E8C1500798DBA /* NotSelected@2x.png in Resources */,
+				AA22131D158EF328007E9708 /* screenshot.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		07DE6881158E8B5200798DBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07DE6896158E8B5200798DBA /* main.m in Sources */,
+				07DE689A158E8B5200798DBA /* CRAppDelegate.m in Sources */,
+				07DE68AB158E902900798DBA /* CRTableViewController.m in Sources */,
+				07DE68AE158E915300798DBA /* CRTableViewCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		07DE6892158E8B5200798DBA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				07DE6893158E8B5200798DBA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		07DE689B158E8B5200798DBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		07DE689C158E8B5200798DBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		07DE689E158E8B5200798DBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CRMultiRowSelector/CRMultiRowSelector-Prefix.pch";
+				INFOPLIST_FILE = "CRMultiRowSelector/CRMultiRowSelector-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		07DE689F158E8B5200798DBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CRMultiRowSelector/CRMultiRowSelector-Prefix.pch";
+				INFOPLIST_FILE = "CRMultiRowSelector/CRMultiRowSelector-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		07DE687F158E8B5200798DBA /* Build configuration list for PBXProject "CRMultiRowSelector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07DE689B158E8B5200798DBA /* Debug */,
+				07DE689C158E8B5200798DBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		07DE689D158E8B5200798DBA /* Build configuration list for PBXNativeTarget "CRMultiRowSelector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07DE689E158E8B5200798DBA /* Debug */,
+				07DE689F158E8B5200798DBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 07DE687C158E8B5200798DBA /* Project object */;
+}
