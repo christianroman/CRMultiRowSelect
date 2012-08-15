@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#define kMarkPosition 50.0f
+
 @interface CRTableViewCell : UITableViewCell
 {
     BOOL isSelected;
-    NSMutableArray *columns;
 }
 
 @property (nonatomic, assign) BOOL isSelected;
-- (void)addColumn:(CGFloat) position;
 
 @end

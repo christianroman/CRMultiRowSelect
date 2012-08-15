@@ -17,21 +17,25 @@
 
 @synthesize dataSource;
 
+#pragma mark - Lifecycle
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         
         dataSource = [[NSArray alloc] initWithObjects:
-                 @"Lorem ipsum dolor",
-                 @"consectetur adipisicing",
-                 @"Sed do eiusmod tempor", 
-                 @"incididunt ut labore",
-                 @"et dolore magna aliqua",
-                 @"Ut enim ad minim",
-                 @"quis nostrud exercitation",
-                 @"ullamco laboris nisi ut",
-                 nil];
+                      @"Lorem ipsum dolor",
+                      @"consectetur adipisicing",
+                      @"Sed do eiusmod tempor", 
+                      @"incididunt ut labore",
+                      @"et dolore magna aliqua",
+                      @"Ut enim ad minim",
+                      @"quis nostrud exercitation",
+                      @"ullamco laboris nisi ut",
+                      @"Duis aute irure dolor in reprehenderit",
+                      @"in voluptate velit esse cillum",
+                      @"dolore eu fugiat nulla pariatur",
+                      nil];
         
     }
     return self;
@@ -40,33 +44,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+}
+
+- (void)dealloc
+{
+    [dataSource release];
+    [super dealloc];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
+#pragma mark - UITableView Data Source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [dataSource count];
@@ -83,87 +79,42 @@
         cell = [[[CRTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CRTableViewCellIdentifier] autorelease];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(kMarkCell, 0, self.view.superview.frame.size.width - kMarkCell, cell.frame.size.height)];
-        [cell addColumn:50];
 		label.tag = kCellLabelTag;
-        
         label.textColor = [UIColor blackColor];
         label.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
         label.textAlignment = UITextAlignmentLeft;
+        label.backgroundColor = [UIColor clearColor];
 		[cell.contentView addSubview:label];
 		[label release];
         
-		UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NotSelected.png"]];
-		imageView.frame = CGRectMake(10.0, 6.0, 30.0, 30.0);
+		UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @Stringify(kUnselected)]];
+		imageView.frame = kImageRect;
         imageView.tag = kSelectionIndicatorTag;
 		[cell.contentView addSubview:imageView];
         [cell setSelectionStyle:UITableViewCellEditingStyleNone];
 		imageView.tag = kCellImageViewTag;
 		[imageView release];
         
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
     }
     
-    [UIView beginAnimations:@"cell shift" context:nil];
-	
 	UILabel *label = (UILabel *)[cell.contentView viewWithTag:kCellLabelTag];
 	label.text = [dataSource objectAtIndex:[indexPath row]];
-	label.opaque = NO;
 	
 	UIImageView *imageView = (UIImageView *)[cell.contentView viewWithTag:kCellImageViewTag];
-	imageView.image = (cell.isSelected) ? [UIImage imageNamed:@"IsSelected.png"] : [UIImage imageNamed:@"NotSelected.png"];
-	[UIView commitAnimations];
+	imageView.image = (cell.isSelected) ? [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d", @Stringify(kSelected), blueColor]] : [UIImage imageNamed: @Stringify(kUnselected)];
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-#pragma mark - Table view delegate
-
+#pragma mark - UITableView Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CRTableViewCell *cell = (CRTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     
     if (!cell)
         return;
-    
-    cell.backgroundView.backgroundColor = [UIColor colorWithRed:223.0/255.0 green:230.0/255.0 blue:250.0/255.0 alpha:1.0];
     
     cell.isSelected = !cell.isSelected;
     

@@ -12,26 +12,16 @@
 
 @synthesize isSelected;
 
-- (void)addColumn:(CGFloat)position {
-    if(!columns)
-        columns = [[NSMutableArray alloc] init];
-    [columns addObject:[NSNumber numberWithFloat:position]];
-}
-
 - (void)drawRect:(CGRect)rect
-{
+{    
     isSelected = NO;
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-    CGContextSetRGBStrokeColor(ctx, .5, .5, .5, 1.0);
-    CGContextSetLineWidth(ctx, .25);
-    
-    for(NSNumber *column in columns){
-        CGFloat f = [column floatValue];
-        CGContextMoveToPoint(ctx, f, .0);
-        CGContextAddLineToPoint(ctx, f, self.bounds.size.height);
-    }
-    
-    CGContextStrokePath(ctx);
+    CGContextRef currentContext = UIGraphicsGetCurrentContext();
+    CGContextSetRGBStrokeColor(currentContext, 224/255.0f, 224/255.0f, 224/255.0f, 1.0f);
+    CGContextSetLineWidth(currentContext, 1.0f);
+    CGContextMoveToPoint(currentContext, kMarkPosition, .0f);
+    CGContextAddLineToPoint(currentContext, kMarkPosition, self.bounds.size.height);
+    CGContextSetShouldAntialias(currentContext, NO);
+    CGContextStrokePath(currentContext);
     
     [super drawRect:rect];
 }
