@@ -8,11 +8,3 @@
 ![Alt text](https://github.com/chroman/CRMultiRowSelect/raw/master/demo2.png "Red color")
 
 ![Alt text](https://github.com/chroman/CRMultiRowSelect/raw/master/demo3.png "Blue color")
-
-<h3>How to use<h3>
-
-	#### Init the CRTableViewController
-
-	```objective-c
-	    CRTableViewController *tableView = [[CRTableViewController alloc] initWithStyle:UITableViewStylePlain];
-	```
