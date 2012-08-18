@@ -72,6 +72,7 @@
     return YES;
 }
 
+#pragma mark - Methods
 - (void)done:(id)sender
 {
     NSLog(@"%@", selectedMarks);
