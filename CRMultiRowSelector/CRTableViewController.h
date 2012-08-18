@@ -32,6 +32,7 @@ typedef enum{
 @interface CRTableViewController : UITableViewController
 {
     NSArray *dataSource;
+    NSMutableArray *selectedMarks;
 }
 
 @property (nonatomic, retain) NSArray *dataSource;

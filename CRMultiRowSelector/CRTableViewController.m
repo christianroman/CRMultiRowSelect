@@ -23,6 +23,13 @@
     self = [super initWithStyle:style];
     if (self) {
         
+        self.title = @"CRMultiRowSelector";
+        
+        UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+                                                                        style:UIBarButtonSystemItemDone target:self action:@selector(done:)];
+        self.navigationItem.rightBarButtonItem = rightButton;
+        [rightButton release];
+        
         dataSource = [[NSArray alloc] initWithObjects:
                       @"Lorem ipsum dolor",
                       @"consectetur adipisicing",
@@ -36,6 +43,8 @@
                       @"in voluptate velit esse cillum",
                       @"dolore eu fugiat nulla pariatur",
                       nil];
+        
+        selectedMarks = [NSMutableArray new];
         
     }
     return self;
@@ -54,12 +63,18 @@
 - (void)dealloc
 {
     [dataSource release];
+    [selectedMarks release];
     [super dealloc];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
+}
+
+- (void)done:(id)sender
+{
+    NSLog(@"%@", selectedMarks);
 }
 
 #pragma mark - UITableView Data Source
@@ -91,7 +106,6 @@
 		imageView.frame = kImageRect;
         imageView.tag = kSelectionIndicatorTag;
 		[cell.contentView addSubview:imageView];
-        [cell setSelectionStyle:UITableViewCellEditingStyleNone];
 		imageView.tag = kCellImageViewTag;
 		[imageView release];
         
@@ -103,7 +117,7 @@
 	label.text = [dataSource objectAtIndex:[indexPath row]];
 	
 	UIImageView *imageView = (UIImageView *)[cell.contentView viewWithTag:kCellImageViewTag];
-	imageView.image = (cell.isSelected) ? [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d", @Stringify(kSelected), blueColor]] : [UIImage imageNamed: @Stringify(kUnselected)];
+	imageView.image = (cell.isSelected) ? [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d", @Stringify(kSelected), redColor]] : [UIImage imageNamed: @Stringify(kUnselected)];
     
     return cell;
 }
@@ -117,6 +131,9 @@
         return;
     
     cell.isSelected = !cell.isSelected;
+    
+    if(cell.isSelected)
+        [selectedMarks addObject:[dataSource objectAtIndex:[indexPath row]]];
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self.tableView reloadData];

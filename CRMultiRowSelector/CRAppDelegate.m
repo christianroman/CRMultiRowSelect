@@ -27,7 +27,11 @@
     
     CRTableViewController *tableView = [[CRTableViewController alloc] initWithStyle:UITableViewStylePlain];
     
-    [self.window setRootViewController:tableView];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:tableView];
+    
+    [self.window setRootViewController:navController];
+    
+    [navController release];
     
     [self.window makeKeyAndVisible];
     return YES;

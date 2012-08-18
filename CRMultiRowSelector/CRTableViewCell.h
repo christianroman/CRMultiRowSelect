@@ -11,9 +11,6 @@
 #define kMarkPosition 50.0f
 
 @interface CRTableViewCell : UITableViewCell
-{
-    BOOL isSelected;
-}
 
 @property (nonatomic, assign) BOOL isSelected;
 
