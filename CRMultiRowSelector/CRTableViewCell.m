@@ -40,6 +40,7 @@
 		[self.contentView addSubview:label];
         
 		imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kUnselected]];
+        imageView.frame = kImageRect;
 		[self.contentView addSubview:imageView];
     }
     return self;

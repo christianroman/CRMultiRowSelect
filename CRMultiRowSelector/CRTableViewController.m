@@ -87,11 +87,8 @@
         cell = [[CRTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CRTableViewCellIdentifier];
     }
     
-	UILabel *label = (UILabel *)[cell.contentView viewWithTag:kCellLabelTag];
-	label.text = [dataSource objectAtIndex:[indexPath row]];
-	
-	UIImageView *imageView = (UIImageView *)[cell.contentView viewWithTag:kCellImageViewTag];
-	imageView.image = (cell.isSelected) ? [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d", kSelected, redColor]] : [UIImage imageNamed: kUnselected];
+    cell.textLabel.text = [dataSource objectAtIndex:[indexPath row]];
+	cell.imageView.image = (cell.isSelected) ? [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d", kSelected, redColor]] : [UIImage imageNamed: kUnselected];
     
     return cell;
 }
