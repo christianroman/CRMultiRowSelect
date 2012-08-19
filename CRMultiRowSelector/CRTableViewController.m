@@ -41,6 +41,17 @@
                       @"Duis aute irure dolor in reprehenderit",
                       @"in voluptate velit esse cillum",
                       @"dolore eu fugiat nulla pariatur",
+                      @"2Lorem ipsum dolor",
+                      @"2consectetur adipisicing",
+                      @"2Sed do eiusmod tempor",
+                      @"2incididunt ut labore",
+                      @"2et dolore magna aliqua",
+                      @"2Ut enim ad minim",
+                      @"2quis nostrud exercitation",
+                      @"2ullamco laboris nisi ut",
+                      @"2Duis aute irure dolor in reprehenderit",
+                      @"2in voluptate velit esse cillum",
+                      @"2dolore eu fugiat nulla pariatur",
                       nil];
         
         selectedMarks = [NSMutableArray new];
@@ -87,7 +98,9 @@
         cell = [[CRTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CRTableViewCellIdentifier];
     }
     
-    cell.textLabel.text = [dataSource objectAtIndex:[indexPath row]];
+    NSString *text = [dataSource objectAtIndex:[indexPath row]];
+    cell.isSelected = [selectedMarks containsObject:text] ? YES : NO;
+    cell.textLabel.text = text;
     
     return cell;
 }
@@ -95,18 +108,13 @@
 #pragma mark - UITableView Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CRTableViewCell *cell = (CRTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-    
-    if (!cell)
-        return;
-    
-    cell.isSelected = !cell.isSelected;
-    
-    if(cell.isSelected)
-        [selectedMarks addObject:[dataSource objectAtIndex:[indexPath row]]];
-    
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self.tableView reloadData];
+    NSString *text = [dataSource objectAtIndex:[indexPath row]];
+    if ([selectedMarks containsObject:text]) { // Is selected?
+        [selectedMarks removeObject:text];
+    }else{
+        [selectedMarks addObject:text];
+    }
+    [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end
