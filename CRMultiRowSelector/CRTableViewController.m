@@ -79,37 +79,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *CRTableViewCellIdentifier = [NSString stringWithFormat:@"CRTableViewCell %i", indexPath.row];
+    static NSString *CRTableViewCellIdentifier = @"cellIdentifier";
     
     CRTableViewCell *cell = (CRTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CRTableViewCellIdentifier];
     
     if (cell == nil) {
-        
         cell = [[CRTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CRTableViewCellIdentifier];
-        
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(kMarkCell, 0, self.view.superview.frame.size.width - kMarkCell, cell.frame.size.height)];
-		label.tag = kCellLabelTag;
-        label.textColor = [UIColor blackColor];
-        label.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
-        label.textAlignment = UITextAlignmentLeft;
-        label.backgroundColor = [UIColor clearColor];
-		[cell.contentView addSubview:label];
-        
-		UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @Stringify(kUnselected)]];
-		imageView.frame = kImageRect;
-        imageView.tag = kSelectionIndicatorTag;
-		[cell.contentView addSubview:imageView];
-		imageView.tag = kCellImageViewTag;
-        
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
     }
     
 	UILabel *label = (UILabel *)[cell.contentView viewWithTag:kCellLabelTag];
 	label.text = [dataSource objectAtIndex:[indexPath row]];
 	
 	UIImageView *imageView = (UIImageView *)[cell.contentView viewWithTag:kCellImageViewTag];
-	imageView.image = (cell.isSelected) ? [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d", @Stringify(kSelected), redColor]] : [UIImage imageNamed: @Stringify(kUnselected)];
+	imageView.image = (cell.isSelected) ? [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d", kSelected, redColor]] : [UIImage imageNamed: kUnselected];
     
     return cell;
 }
