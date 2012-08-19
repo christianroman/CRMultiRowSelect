@@ -10,13 +10,13 @@
 
 @implementation CRTableViewCell
 
-@synthesize isSelected;
+@synthesize isSelected = _isSelected;
 @synthesize textLabel = label;
 @synthesize imageView = imageView;
 
 - (void)drawRect:(CGRect)rect
 {    
-    isSelected = NO;
+    _isSelected = NO;
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
     CGContextSetRGBStrokeColor(currentContext, 224/255.0f, 224/255.0f, 224/255.0f, 1.0f);
     CGContextSetLineWidth(currentContext, 1.0f);
@@ -49,6 +49,13 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
+}
+
+#pragma mark - Properties
+- (void)setIsSelected:(BOOL)isSelected
+{
+    _isSelected = isSelected;
+    self.imageView.image = (isSelected) ? [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d", kSelected, redColor]] : [UIImage imageNamed: kUnselected];
 }
 
 @end

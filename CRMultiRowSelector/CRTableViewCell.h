@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum{
+    redColor = 0,
+    greenColor = 1,
+    blueColor = 2
+} markColor;
+
 #define kMarkPosition 50.0f
 #define kCellImageViewTag		1000
 #define kCellLabelTag			1001

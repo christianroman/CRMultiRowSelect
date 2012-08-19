@@ -88,7 +88,6 @@
     }
     
     cell.textLabel.text = [dataSource objectAtIndex:[indexPath row]];
-	cell.imageView.image = (cell.isSelected) ? [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d", kSelected, redColor]] : [UIImage imageNamed: kUnselected];
     
     return cell;
 }
