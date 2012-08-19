@@ -271,6 +271,7 @@
 		07DE689E158E8B5200798DBA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CRMultiRowSelector/CRMultiRowSelector-Prefix.pch";
 				INFOPLIST_FILE = "CRMultiRowSelector/CRMultiRowSelector-Info.plist";
@@ -282,6 +283,7 @@
 		07DE689F158E8B5200798DBA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CRMultiRowSelector/CRMultiRowSelector-Prefix.pch";
 				INFOPLIST_FILE = "CRMultiRowSelector/CRMultiRowSelector-Info.plist";

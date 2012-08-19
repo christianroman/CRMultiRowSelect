@@ -35,6 +35,6 @@ typedef enum{
     NSMutableArray *selectedMarks;
 }
 
-@property (nonatomic, retain) NSArray *dataSource;
+@property (nonatomic) NSArray *dataSource;
 
 @end

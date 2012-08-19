@@ -28,7 +28,6 @@
         UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
                                                                         style:UIBarButtonSystemItemDone target:self action:@selector(done:)];
         self.navigationItem.rightBarButtonItem = rightButton;
-        [rightButton release];
         
         dataSource = [[NSArray alloc] initWithObjects:
                       @"Lorem ipsum dolor",
@@ -60,12 +59,6 @@
     [super viewDidUnload];
 }
 
-- (void)dealloc
-{
-    [dataSource release];
-    [selectedMarks release];
-    [super dealloc];
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -92,7 +85,7 @@
     
     if (cell == nil) {
         
-        cell = [[[CRTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CRTableViewCellIdentifier] autorelease];
+        cell = [[CRTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CRTableViewCellIdentifier];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(kMarkCell, 0, self.view.superview.frame.size.width - kMarkCell, cell.frame.size.height)];
 		label.tag = kCellLabelTag;
@@ -101,14 +94,12 @@
         label.textAlignment = UITextAlignmentLeft;
         label.backgroundColor = [UIColor clearColor];
 		[cell.contentView addSubview:label];
-		[label release];
         
 		UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @Stringify(kUnselected)]];
 		imageView.frame = kImageRect;
         imageView.tag = kSelectionIndicatorTag;
 		[cell.contentView addSubview:imageView];
 		imageView.tag = kCellImageViewTag;
-		[imageView release];
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
