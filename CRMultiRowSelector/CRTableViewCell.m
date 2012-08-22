@@ -85,11 +85,11 @@
         label.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
         label.textAlignment = UITextAlignmentLeft;
         label.backgroundColor = [UIColor clearColor];
-		[self.contentView addSubview:label];
+        [self.contentView addSubview:label];
         
         imageView = [UIImageView new];
         imageView.frame = kImageRect;
-		[self.contentView addSubview:imageView];
+        [self.contentView addSubview:imageView];
         
         _renderedMark = [self renderMark];
     }
