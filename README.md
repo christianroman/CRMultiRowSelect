@@ -1,15 +1,15 @@
 CRMultiRowSelect
 ============
 
-CRMultiRowSelect is a custom UITableViewCell for iOS that supports multiple row selection in a UITableViewController.
+CRMultiRowSelect is a custom **UITableViewCell** for iOS that supports multiple row selection in a UITableViewController.
 
 Customize the color you want in just one line of code.
 
-All is drawing with **CoreGraphics** NO IMAGES, so it supports Retina Display and looks beauty.
+Everything is drawn with **CoreGraphics** NO IMAGES, so it supports Retina Display and looks beauty.
 
 ![Demo screenshot](https://github.com/chroman/CRMultiRowSelect/raw/master/demo.png)
 
-**Multiple colors:**
+**Customizable mark colors:**
 
 ![Marks screenshot](https://github.com/chroman/CRMultiRowSelect/raw/master/marks.png)
 
@@ -17,7 +17,7 @@ How To Use
 ----------
 
  - Add **CRTableViewCell.m** and **CRTableViewCell.h** files to your XCode Project
- - In your UITableViewController.h add you the selected marks **NSMutableArray**:
+ - In your **UITableViewController.h** add you the 'selected marks' **NSMutableArray**:
 
 ```objective-c
 @interface YourTableViewController : UITableViewController
@@ -30,16 +30,18 @@ How To Use
 - Customize your **cellForRowAtIndexPath** method implementation:
 
 ```objective-c
- - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CRTableViewCellIdentifier = @"cellIdentifier";
     
+    // init the CRTableViewCell
     CRTableViewCell *cell = (CRTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CRTableViewCellIdentifier];
     
     if (cell == nil) {
         cell = [[CRTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CRTableViewCellIdentifier];
     }
     
+    // Check if the cell is currently selected (marked)
     NSString *text = [dataSource objectAtIndex:[indexPath row]];
     cell.isSelected = [selectedMarks containsObject:text] ? YES : NO;
     cell.textLabel.text = text;
@@ -64,13 +66,13 @@ How To Use
 }
 ```
 
- - You can change the mark color using HEX color, just change this line in the CRTableViewCell.m file
+ - You can customize the mark color using a HEX color, just change this line in the **CRTableViewCell.m** file
 
 ```objective-c
 #define kMarkColor                  kBlueColor // or your HEX color, example: 0xfff000
 ```
 
- - Optionally you can get your selected cells (example):
+ - Optionally you can get the selected cells using your previous declared **NSMutableArray** (example):
 
 ```objective-c
 - (void)done:(id)sender
@@ -79,12 +81,14 @@ How To Use
 }
 ```
 
+- Also, you can refer to the Demo Example in the **CRTableViewController.m** file
 
 Requirements
 ----------
 * Xcode 4.3 or higher
 * LLVM compiler
-* iOS 5 or higher
+* iOS 4.3 or higher
+* CoreGraphics Framework
 * ARC
 
 ## License
