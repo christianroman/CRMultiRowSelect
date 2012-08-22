@@ -15,7 +15,7 @@
 /* Unselected mark constants */
 #define kUnselectedRect             CGRectMake(13.0, 10.0, 23.0, 23.0)
 #define kCircleRect                 CGRectMake(3.5, 2.5, 22.0, 22.0)
-#define kCircleOverlayRect          CGRectMake(2.5, 12.5, 26.0, 22.0)
+#define kCircleOverlayRect          CGRectMake(1.5, 12.5, 26.0, 23.0)
 
 /* Mark constants */
 #define kStrokeWidth                2.0
@@ -29,11 +29,11 @@
 #define kMarkBase                   CGPointMake(9.0, 13.5)
 #define kMarkDrawPoint              CGPointMake(20.0, 9.5)
 #define kShadowColor                [UIColor colorWithWhite:.0 alpha:0.7]
-#define kMarkShadowColor            [UIColor colorWithWhite:.0 alpha:0.5]
+#define kMarkShadowColor            [UIColor colorWithWhite:.0 alpha:0.3]
 #define kBlueColor                  0x236ed8
 #define kGreenColor                 0x179714
 #define kRedColor                   0xa4091c
-#define kMarkColor                  0xff8a00
+#define kMarkColor                  kBlueColor
 
 /* Colums and cell constants */
 #define kColumnPosition             50.0
@@ -151,7 +151,7 @@
     /* Mark */
     CGContextSaveGState(ctx);
     {
-        CGContextSetShadowWithColor(ctx, kMarkShadowOffset, 1.0, kMarkShadowColor.CGColor );
+        CGContextSetShadowWithColor(ctx, kMarkShadowOffset, .0, kMarkShadowColor.CGColor );
         CGContextMoveToPoint(ctx, kMarkBase.x, kMarkBase.y);
         CGContextAddLineToPoint(ctx, kMarkBase.x + kMarkHeight * sin(kMarkDegrees), kMarkBase.y + kMarkHeight * cos(kMarkDegrees));
         CGContextAddLineToPoint(ctx, kMarkDrawPoint.x, kMarkDrawPoint.y);
