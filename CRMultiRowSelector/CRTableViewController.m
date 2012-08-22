@@ -23,7 +23,7 @@
     self = [super initWithStyle:style];
     if (self) {
         
-        self.title = @"CRMultiRowSelector";
+        self.title = @"CRMultiRowSelect";
         
         UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
                                                                         style:UIBarButtonSystemItemDone target:self action:@selector(done:)];
