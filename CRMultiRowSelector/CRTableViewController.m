@@ -92,12 +92,14 @@
 {
     static NSString *CRTableViewCellIdentifier = @"cellIdentifier";
     
+    // init the CRTableViewCell
     CRTableViewCell *cell = (CRTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CRTableViewCellIdentifier];
     
     if (cell == nil) {
         cell = [[CRTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CRTableViewCellIdentifier];
     }
     
+    // Check if the cell is currently selected (marked)
     NSString *text = [dataSource objectAtIndex:[indexPath row]];
     cell.isSelected = [selectedMarks containsObject:text] ? YES : NO;
     cell.textLabel.text = text;
@@ -109,11 +111,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *text = [dataSource objectAtIndex:[indexPath row]];
-    if ([selectedMarks containsObject:text]) { // Is selected?
+    
+    if ([selectedMarks containsObject:text])// Is selected?
         [selectedMarks removeObject:text];
-    }else{
+    else
         [selectedMarks addObject:text];
-    }
+    
     [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
