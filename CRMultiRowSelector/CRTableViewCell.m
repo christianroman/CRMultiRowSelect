@@ -9,36 +9,36 @@
 #import "CRTableViewCell.h"
 
 /* Macro for background colors */
-#define colorWithRGBHex(hex)[UIColor colorWithRed:((float)((hex&0xFF0000)>>16))/255.0 green:((float)((hex&0xFF00)>> 8))/255.0 blue:((float)(hex&0xFF))/255.0 alpha:1.0]
+#define colorWithRGBHex(hex)[UIColor colorWithRed:((float)((hex&0xFF0000)>>16))/255.0 green:((float)((hex&0xFF00)>>8))/255.0 blue:((float)(hex&0xFF))/255.0 alpha:1.0]
 #define clearColorWithRGBHex(hex)[UIColor colorWithRed:MIN((((int)(hex>>16)&0xFF)/255.0)+.1,1.0)green:MIN((((int)(hex>>8)&0xFF)/255.0)+.1,1.0)blue:MIN((((int)(hex)&0xFF)/255.0)+.1,1.0)alpha:1.0]
 
 /* Unselected mark constants */
-#define kUnselectedRect         CGRectMake(13.0, 10.0, 23.0, 23.0)
-#define kCircleRect             CGRectMake(3.5, 2.5, 22.0, 22.0)
-#define kCircleOverlayRect      CGRectMake(2.5, 12.5, 26.0, 22.0)
+#define kUnselectedRect             CGRectMake(13.0, 10.0, 23.0, 23.0)
+#define kCircleRect                 CGRectMake(3.5, 2.5, 22.0, 22.0)
+#define kCircleOverlayRect          CGRectMake(2.5, 12.5, 26.0, 22.0)
 
 /* Mark constants */
-#define kStrokeWidth            2.0
-#define kShadowRadius           4.0
-#define kMarkDegrees            70.0f
-#define kMarkWidth              3.0f
-#define kMarkHeight             6.0f
-#define kShadowOffset           CGSizeMake(0, 2.0)
-#define kMarkShadowOffset       CGSizeMake(.0, -1.0)
-#define kMarkImageSize          CGSizeMake(30.0, 30.0)
-#define kMarkBase               CGPointMake(9.0, 13.5)
-#define kMarkDrawPoint          CGPointMake(20.0, 9.5)
-#define kShadowColor            [UIColor colorWithWhite:.0 alpha:0.7]
-#define kMarkShadowColor        [UIColor colorWithWhite:.0 alpha:0.5]
-#define kBlueColor              0x236ed8
-#define kGreenColor             0x179714
-#define kRedColor               0xa4091c
-#define kMarkColor              0xff8a00
+#define kStrokeWidth                2.0
+#define kShadowRadius               4.0
+#define kMarkDegrees                70.0
+#define kMarkWidth                  3.0
+#define kMarkHeight                 6.0
+#define kShadowOffset               CGSizeMake(0, 2.0)
+#define kMarkShadowOffset           CGSizeMake(.0, -1.0)
+#define kMarkImageSize              CGSizeMake(30.0, 30.0)
+#define kMarkBase                   CGPointMake(9.0, 13.5)
+#define kMarkDrawPoint              CGPointMake(20.0, 9.5)
+#define kShadowColor                [UIColor colorWithWhite:.0 alpha:0.7]
+#define kMarkShadowColor            [UIColor colorWithWhite:.0 alpha:0.5]
+#define kBlueColor                  0x236ed8
+#define kGreenColor                 0x179714
+#define kRedColor                   0xa4091c
+#define kMarkColor                  0xff8a00
 
 /* Colums and cell constants */
-#define kColumnPosition         50.0
-#define kMarkCell               60.0
-#define kImageRect              CGRectMake(10.0, 8.0, 30.0, 30.0)
+#define kColumnPosition             50.0
+#define kMarkCell                   60.0
+#define kImageRect                  CGRectMake(10.0, 8.0, 30.0, 30.0)
 
 @implementation CRTableViewCell
 
