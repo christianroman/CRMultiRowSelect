@@ -17,13 +17,13 @@ How To Use
 ----------
 
  - Add **CRTableViewCell.m** and **CRTableViewCell.h** files to your XCode Project
- - In your **UITableViewController.h** add you the 'selected marks' **NSMutableArray**:
+ - In your **UITableViewController.h** add your 'selected marks' **NSMutableArray**:
 
 ```objective-c
 @interface YourTableViewController : UITableViewController
 {
     NSArray *dataSource;
-    NSMutableArray *selectedMarks;
+    NSMutableArray *selectedMarks; // You need probably to save the selected cells for use in the future.
 }
 ```
 
