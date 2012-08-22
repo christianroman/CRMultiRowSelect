@@ -23,7 +23,7 @@
 #define kMarkDegrees                70.0
 #define kMarkWidth                  3.0
 #define kMarkHeight                 6.0
-#define kShadowOffset               CGSizeMake(0, 2.0)
+#define kShadowOffset               CGSizeMake(.0, 2.0)
 #define kMarkShadowOffset           CGSizeMake(.0, -1.0)
 #define kMarkImageSize              CGSizeMake(30.0, 30.0)
 #define kMarkBase                   CGPointMake(9.0, 13.5)
@@ -80,7 +80,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        label = [[UILabel alloc] initWithFrame:CGRectMake(kMarkCell, 0, self.frame.size.width - kMarkCell, self.frame.size.height)];
+        label = [[UILabel alloc] initWithFrame:CGRectMake(kMarkCell, .0, self.frame.size.width - kMarkCell, self.frame.size.height)];
         label.textColor = [UIColor blackColor];
         label.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
         label.textAlignment = UITextAlignmentLeft;
