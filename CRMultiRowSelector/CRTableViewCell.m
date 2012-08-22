@@ -159,6 +159,7 @@
         CGContextSetStrokeColorWithColor(ctx, [UIColor whiteColor].CGColor);
         CGContextStrokePath(ctx);
     }
+    CGContextRestoreGState(ctx);
     
     UIImage *selectedMark = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
