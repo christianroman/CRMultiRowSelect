@@ -8,39 +8,36 @@
 
 #import "CRTableViewCell.h"
 
+/* Macro for background colors */
 #define colorWithRGBHex(hex)[UIColor colorWithRed:((float)((hex&0xFF0000)>>16))/255.0 green:((float)((hex&0xFF00)>> 8))/255.0 blue:((float)(hex&0xFF))/255.0 alpha:1.0]
-#define clearColorWithRGBHex(hex)[UIColor colorWithRed:MIN((((int)(hex>>16)&0xFF)/255.0)+0.1,1.0)green:MIN((((int)(hex>>8)&0xFF)/255.0)+0.1,1.0)blue:MIN((((int)(hex)&0xFF)/255.0)+0.1,1.0)alpha:1.0]
+#define clearColorWithRGBHex(hex)[UIColor colorWithRed:MIN((((int)(hex>>16)&0xFF)/255.0)+.1,1.0)green:MIN((((int)(hex>>8)&0xFF)/255.0)+.1,1.0)blue:MIN((((int)(hex)&0xFF)/255.0)+.1,1.0)alpha:1.0]
 
-#define kUnselectedRect         CGRectMake(13, 10, 23, 23)
-#define kCircleRect             CGRectMake(3.5, 2.5, 22, 22)
-#define kCircleOverlayRect      CGRectMake(2.5, 12.5, 26, 22)
+/* Unselected mark constants */
+#define kUnselectedRect         CGRectMake(13.0, 10.0, 23.0, 23.0)
+#define kCircleRect             CGRectMake(3.5, 2.5, 22.0, 22.0)
+#define kCircleOverlayRect      CGRectMake(2.5, 12.5, 26.0, 22.0)
 
-#define kStrokeWidth            2.0f
-
-#define kShadowRadius           4.0f
-#define kShadowOffset           CGSizeMake(0, 2.0f)
-#define kShadowColor            [UIColor colorWithWhite:0.0f alpha:0.7f]
-#define kMarkShadowColor        [UIColor colorWithWhite:0.0f alpha:0.5f]
+/* Mark constants */
+#define kStrokeWidth            2.0
+#define kShadowRadius           4.0
+#define kMarkDegrees            70.0f
+#define kMarkWidth              3.0f
+#define kMarkHeight             6.0f
+#define kShadowOffset           CGSizeMake(0, 2.0)
+#define kMarkShadowOffset       CGSizeMake(.0, -1.0)
+#define kMarkImageSize          CGSizeMake(30.0, 30.0)
+#define kMarkBase               CGPointMake(9.0, 13.5)
+#define kMarkDrawPoint          CGPointMake(20.0, 9.5)
+#define kShadowColor            [UIColor colorWithWhite:.0 alpha:0.7]
+#define kMarkShadowColor        [UIColor colorWithWhite:.0 alpha:0.5]
 #define kBlueColor              0x236ed8
 #define kGreenColor             0x179714
 #define kRedColor               0xa4091c
 #define kMarkColor              0xff8a00
-#define kMarkImageSize          CGSizeMake(30, 30)
-#define kMarkBase               CGPointMake(9, 13.5)
-#define kMarkDegrees            70.0f
-#define kMarkWidth              3.0f
-#define kMarkHeight             6.0f
-#define kMarkShadowOffset       CGSizeMake(0, -1.0f)
-#define kMarkDrawPoint          CGPointMake(20.0f, 9.5f)
 
-#define kColumnPosition         50.0f
-#define kCellImageViewTag		1000
-#define kCellLabelTag			1001
-#define kMarkCell               60
-#define kSelectionIndicatorTag  2000
-
-#define kLabelIndentedRect      CGRectMake(60.0, 12.0, 290.0, 20.0)
-#define kLabelRect              CGRectMake(15.0, 12.0, 275.0, 20.0)
+/* Colums and cell constants */
+#define kColumnPosition         50.0
+#define kMarkCell               60.0
 #define kImageRect              CGRectMake(10.0, 8.0, 30.0, 30.0)
 
 @implementation CRTableViewCell
@@ -62,21 +59,48 @@
     {
         CGContextAddPath(ctx, unselectedCircle.CGPath);
         CGContextSetLineWidth(ctx, kStrokeWidth);
-        CGContextSetRGBFillColor(ctx, 1.0f, 1.0f, 1.0f, 1.0f);
-        CGContextSetRGBStrokeColor(ctx, 229/255.0f, 229/255.0f, 229/255.0f, 1.0f);
+        CGContextSetRGBFillColor(ctx, 1.0, 1.0, 1.0, 1.0);
+        CGContextSetRGBStrokeColor(ctx, 229/255.0, 229/255.0, 229/255.0, 1.0);
         CGContextDrawPath(ctx, kCGPathFillStroke);
     }
     CGContextRestoreGState(ctx);
     
     /* Column separator */
-    CGContextSetRGBStrokeColor(ctx, 224/255.0f, 224/255.0f, 224/255.0f, 1.0f);
-    CGContextSetLineWidth(ctx, 1.0f);
-    CGContextMoveToPoint(ctx, kColumnPosition, .0f);
+    CGContextSetRGBStrokeColor(ctx, 224/255.0, 224/255.0, 224/255.0, 1.0);
+    CGContextSetLineWidth(ctx, 1.0);
+    CGContextMoveToPoint(ctx, kColumnPosition, .0);
     CGContextAddLineToPoint(ctx, kColumnPosition, self.bounds.size.height);
     CGContextSetShouldAntialias(ctx, NO);
     CGContextStrokePath(ctx);
     
     [super drawRect:rect];
+}
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        label = [[UILabel alloc] initWithFrame:CGRectMake(kMarkCell, 0, self.frame.size.width - kMarkCell, self.frame.size.height)];
+        label.textColor = [UIColor blackColor];
+        label.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
+        label.textAlignment = UITextAlignmentLeft;
+        label.backgroundColor = [UIColor clearColor];
+		[self.contentView addSubview:label];
+        
+        imageView = [UIImageView new];
+        imageView.frame = kImageRect;
+		[self.contentView addSubview:imageView];
+        
+        _renderedMark = [self renderMark];
+    }
+    return self;
+}
+
+#pragma mark - Properties
+- (void)setIsSelected:(BOOL)isSelected
+{
+    _isSelected = isSelected;
+    self.imageView.image = (isSelected) ? _renderedMark : nil;
 }
 
 - (UIImage *)renderMark
@@ -140,33 +164,6 @@
     UIGraphicsEndImageContext();
     
     return selectedMark;
-}
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        label = [[UILabel alloc] initWithFrame:CGRectMake(kMarkCell, 0, self.frame.size.width - kMarkCell, self.frame.size.height)];
-        label.textColor = [UIColor blackColor];
-        label.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
-        label.textAlignment = UITextAlignmentLeft;
-        label.backgroundColor = [UIColor clearColor];
-		[self.contentView addSubview:label];
-        
-        imageView = [UIImageView new];
-        imageView.frame = kImageRect;
-		[self.contentView addSubview:imageView];
-        
-        _renderedMark = [self renderMark];
-    }
-    return self;
-}
-
-#pragma mark - Properties
-- (void)setIsSelected:(BOOL)isSelected
-{
-    _isSelected = isSelected;
-    self.imageView.image = (isSelected) ? _renderedMark : nil;
 }
 
 @end
