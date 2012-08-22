@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>CRMultiRowSelect by chroman</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>CRMultiRowSelect</h1>
+        <h2>Custom UITableView that allows multiple row selection</h2>
+        <a href="https://github.com/chroman/CRMultiRowSelect" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>CRMultiRowSelect</h1>
+
+<p>CRMultiRowSelect is a custom <strong>UITableViewCell</strong> for iOS that supports multiple row selection in a UITableViewController.</p>
+
+<p>Customize the color you want in just one line of code.</p>
+
+<p>Everything is drawn with <strong>CoreGraphics</strong> NO IMAGES, so it supports Retina Display and looks beauty.</p>
+
+<p><img src="https://github.com/chroman/CRMultiRowSelect/raw/master/demo.png" alt="Demo screenshot"></p>
+
+<p><strong>Customizable mark colors:</strong></p>
+
+<p><img src="https://github.com/chroman/CRMultiRowSelect/raw/master/marks.png" alt="Marks screenshot"></p>
+
+<h2>How To Use</h2>
+
+<ul>
+<li>Add <strong>CRTableViewCell.m</strong> and <strong>CRTableViewCell.h</strong> files to your XCode Project</li>
+<li>In your <strong>UITableViewController.h</strong> add your 'selected marks' <strong>NSMutableArray</strong>:</li>
+</ul><div class="highlight"><pre><span class="k">@interface</span> <span class="nc">YourTableViewController</span> : <span class="nc">UITableViewController</span>
+<span class="p">{</span>
+    <span class="n">NSArray</span> <span class="o">*</span><span class="n">dataSource</span><span class="p">;</span>
+    <span class="n">NSMutableArray</span> <span class="o">*</span><span class="n">selectedMarks</span><span class="p">;</span> <span class="c1">// You need probably to save the selected cells for use in the future.</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>Customize your <strong>cellForRowAtIndexPath</strong> method implementation:</li>
+</ul><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="n">UITableViewCell</span> <span class="o">*</span><span class="p">)</span><span class="nf">tableView:</span><span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span> <span class="nf">cellForRowAtIndexPath:</span><span class="p">(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="nv">indexPath</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">CRTableViewCellIdentifier</span> <span class="o">=</span> <span class="s">@"cellIdentifier"</span><span class="p">;</span>
+
+    <span class="c1">// init the CRTableViewCell</span>
+    <span class="n">CRTableViewCell</span> <span class="o">*</span><span class="n">cell</span> <span class="o">=</span> <span class="p">(</span><span class="n">CRTableViewCell</span> <span class="o">*</span><span class="p">)[</span><span class="n">tableView</span> <span class="nl">dequeueReusableCellWithIdentifier:</span><span class="n">CRTableViewCellIdentifier</span><span class="p">];</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">cell</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cell</span> <span class="o">=</span> <span class="p">[[</span><span class="n">CRTableViewCell</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithStyle:</span><span class="n">UITableViewCellStyleDefault</span> <span class="nl">reuseIdentifier:</span><span class="n">CRTableViewCellIdentifier</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Check if the cell is currently selected (marked)</span>
+    <span class="n">NSString</span> <span class="o">*</span><span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="n">dataSource</span> <span class="nl">objectAtIndex:</span><span class="p">[</span><span class="n">indexPath</span> <span class="n">row</span><span class="p">]];</span>
+    <span class="n">cell</span><span class="p">.</span><span class="n">isSelected</span> <span class="o">=</span> <span class="p">[</span><span class="n">selectedMarks</span> <span class="nl">containsObject:</span><span class="n">text</span><span class="p">]</span> <span class="o">?</span> <span class="n">YES</span> <span class="o">:</span> <span class="n">NO</span><span class="p">;</span>
+    <span class="n">cell</span><span class="p">.</span><span class="n">textLabel</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">cell</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>Customize your <strong>didSelectRowAtIndexPath</strong> method implementation:</li>
+</ul><div class="highlight"><pre> <span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">tableView:</span><span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="n">tableView</span> <span class="nl">didSelectRowAtIndexPath:</span><span class="p">(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="n">indexPath</span>
+<span class="p">{</span>
+    <span class="n">NSString</span> <span class="o">*</span><span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="n">dataSource</span> <span class="nl">objectAtIndex:</span><span class="p">[</span><span class="n">indexPath</span> <span class="n">row</span><span class="p">]];</span>
+
+    <span class="k">if</span> <span class="p">([</span><span class="n">selectedMarks</span> <span class="nl">containsObject:</span><span class="n">text</span><span class="p">])</span><span class="c1">// Is selected?</span>
+        <span class="p">[</span><span class="n">selectedMarks</span> <span class="nl">removeObject:</span><span class="n">text</span><span class="p">];</span>
+    <span class="k">else</span>
+        <span class="p">[</span><span class="n">selectedMarks</span> <span class="nl">addObject:</span><span class="n">text</span><span class="p">];</span>
+
+    <span class="p">[</span><span class="n">tableView</span> <span class="nl">reloadRowsAtIndexPaths:</span><span class="p">[</span><span class="n">NSArray</span> <span class="nl">arrayWithObject:</span><span class="n">indexPath</span><span class="p">]</span> <span class="nl">withRowAnimation:</span><span class="n">UITableViewRowAnimationAutomatic</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>You can customize the mark color using a HEX color, just change this line in the <strong>CRTableViewCell.m</strong> file</li>
+</ul><div class="highlight"><pre><span class="cp">#define kMarkColor                  kBlueColor </span><span class="c1">// or your HEX color, example: 0xfff000</span>
+</pre></div>
+
+<ul>
+<li>Optionally you can get the selected cells using your previous declared <strong>NSMutableArray</strong> (example):</li>
+</ul><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">done:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">sender</span>
+<span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span> <span class="n">selectedMarks</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>Also, you can refer to the Demo Example in the <strong>CRTableViewController.m</strong> file</li>
+</ul><h2>Requirements</h2>
+
+<ul>
+<li>Xcode 4.3 or higher</li>
+<li>LLVM compiler</li>
+<li>iOS 4.3 or higher</li>
+<li>CoreGraphics Framework</li>
+<li>ARC</li>
+</ul><h2>License</h2>
+
+<p>Copyright 2012 Christian H. Roman Mendoza / Daniel Rueda Jimenez</p>
+
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at</p>
+
+<pre><code>   http://www.apache.org/licenses/LICENSE-2.0
+</code></pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.</p>
+
+<h2>Contact me</h2>
+
+<p><strong>Christian Roman</strong>  </p>
+
+<p>Website: <a href="http://chroman.mx">http://chroman.mx</a></p>
+
+<p>Contact: <a href="mailto:chroman16@gmail.com">chroman16@gmail.com</a></p>
+
+<p>Twitter: <a href="http://twitter.com/chroman">http://twitter.com/chroman</a> </p>
+
+<p>Thanks for the support: Daniel Rueda <a href="http://twitter.com/xtr3m0">Xtr3m0</a></p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/chroman/CRMultiRowSelect/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/chroman/CRMultiRowSelect/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/chroman/CRMultiRowSelect"></a> is maintained by <a href="https://github.com/chroman">chroman</a>.</p>
+
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
