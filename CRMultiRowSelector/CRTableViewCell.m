@@ -13,7 +13,8 @@
 #define clearColorWithRGBHex(hex)[UIColor colorWithRed:MIN((((int)(hex>>16)&0xFF)/255.0)+.1,1.0)green:MIN((((int)(hex>>8)&0xFF)/255.0)+.1,1.0)blue:MIN((((int)(hex)&0xFF)/255.0)+.1,1.0)alpha:1.0]
 
 /* Unselected mark constants */
-#define kUnselectedRect             CGRectMake(13.0, 10.0, 23.0, 23.0)
+#define kCircleRadioUnselected      23.0
+#define kCircleLeftMargin           13.0
 #define kCircleRect                 CGRectMake(3.5, 2.5, 22.0, 22.0)
 #define kCircleOverlayRect          CGRectMake(1.5, 12.5, 26.0, 23.0)
 
@@ -51,7 +52,14 @@
 {    
     _isSelected = NO;
     
-    UIBezierPath *unselectedCircle = [UIBezierPath bezierPathWithOvalInRect:kUnselectedRect];
+    CGFloat posY = (rect.size.height / 2) - kCircleRadioUnselected/2;
+    
+    CGRect unselectedCircleRect = CGRectMake(kCircleLeftMargin, posY, kCircleRadioUnselected, kCircleRadioUnselected);
+    CGRect imageViewRect = CGRectMake(10, rect.size.height/2 - kCircleLeftMargin - 1, kMarkCell/2, kMarkCell/2);
+    
+    imageView.frame = imageViewRect; // Center the imageView
+    
+    UIBezierPath *unselectedCircle = [UIBezierPath bezierPathWithOvalInRect:unselectedCircleRect]; // Unselected circle centered
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     
     /* Unselected circle */
@@ -88,7 +96,6 @@
         [self.contentView addSubview:label];
         
         imageView = [UIImageView new];
-        imageView.frame = kImageRect;
         [self.contentView addSubview:imageView];
         
         _renderedMark = [self renderMark];
@@ -114,7 +121,6 @@
         UIGraphicsBeginImageContext(kMarkImageSize);
     
     CGContextRef ctx = UIGraphicsGetCurrentContext();
-    
     UIBezierPath *markCircle = [UIBezierPath bezierPathWithOvalInRect:kCircleRect];
     
     /* Background */
