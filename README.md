@@ -123,4 +123,4 @@ Thanks for the support: Daniel Rueda [Xtr3m0][4]
   [1]: http://chroman.mx
   [2]: mailto:chroman16@gmail.com
   [3]: http://twitter.com/chroman
-  [4]: http://twitter.com/xtr3m0
+  [4]: http://git.drj.mx/
