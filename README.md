@@ -112,7 +112,7 @@ Contact me
 
 **Christian Roman**  
   
-Website: [http://chroman.mx][1]
+Website: [http://chroman.me][1]
 
 Contact: [chroman16@gmail.com][2]
 
@@ -120,7 +120,7 @@ Twitter: [http://twitter.com/chroman][3]
 
 Thanks for the support: Daniel Rueda [Xtr3m0][4]
 
-  [1]: http://chroman.mx
+  [1]: http://chroman.me
   [2]: mailto:chroman16@gmail.com
   [3]: http://twitter.com/chroman
   [4]: http://git.drj.mx/
