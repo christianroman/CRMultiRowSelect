@@ -108,6 +108,8 @@
 {
     _isSelected = isSelected;
     self.imageView.image = (isSelected) ? _renderedMark : nil;
+    
+    [self setNeedsDisplay];
 }
 
 - (UIImage *)renderMark
